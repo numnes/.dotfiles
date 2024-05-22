@@ -1,10 +1,11 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.colorscheme.nightfox-nvim", enabled = false },
+  { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
   { import = "astrocommunity.colorscheme.rose-pine" },
-  { import = "astrocommunity.colorscheme.catppuccin", enabled = true },
-  {
-    -- further customize the options set by the community
+  { import = "astrocommunity.colorscheme.catppuccin" },
+  { -- further customize the options set by the community
     "catppuccin",
     opts = {
       integrations = {
@@ -17,14 +18,14 @@ return {
         cmp = true,
         overseer = true,
         lsp_trouble = true,
-        ts_rainbow2 = true,
+        rainbow_delimiters = true,
       },
     },
   },
   { import = "astrocommunity.completion.copilot-lua" },
-  {
-    -- further customize the options set by the community
-    "copilot.lua",
+  { -- further customize the options set by the community
+    "zbirenbaum/copilot.lua",
+    lazy = false,
     opts = {
       suggestion = {
         keymap = {
@@ -41,9 +42,6 @@ return {
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
   {
     "m4xshen/smartcolumn.nvim",
-    opts = {
-      colorcolumn = 120,
-      disabled_filetypes = { "help" },
-    },
+    opts = { colorcolumn = "120", disabled_filetypes = { "help" } },
   },
 }

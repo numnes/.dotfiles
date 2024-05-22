@@ -1,0 +1,33 @@
+session: ecommerce
+
+root: ~/dev/ecommerce
+
+windows:
+  - name: front
+    root: ecomm-front
+    layout: main-vertical
+    commands:
+      - nvim .
+    panes:
+      - type: horizontal
+        commands:
+          - ls -la
+          - pnpm i && pnpm dev
+
+  - name: legacy
+    root: ecomm-front-legacy
+    layout: main-vertical
+    commands:
+      - nvim .
+    panes:
+      - type: horizontal
+        commands:
+          - ls -la
+          - yarn && yarn dev
+
+  - name: extra
+    root: /etc/nginx/conf.d/
+    layout: main-vertical
+    commands:
+      - ls -la
+      - sudo systemctl start nginx

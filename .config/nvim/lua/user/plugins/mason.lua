@@ -4,37 +4,33 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     -- overrides `require("mason-lspconfig").setup(...)`
-    opts = {
-      ensure_installed = { "tsserver", "lua_ls" },
-    },
-    on_attach = function(client, bufnr)
-      -- custom on_attach for this plugin
-      -- Find the clients capabilities
-      local cap = client.resolved_capabilities
-
-      -- Only highlight if compatible with the language
-      if cap.document_highlight then
-        vim.cmd "augroup LspHighlight"
-        vim.cmd "autocmd!"
-        vim.cmd "autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()"
-        vim.cmd "autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()"
-        vim.cmd "augroup END"
-      end
+    opts = function(_, opts)
+      -- add more things to the ensure_installed table protecting against community packs modifying it
+      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+        -- "lua_ls",
+      })
     end,
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
   {
     "jay-babu/mason-null-ls.nvim",
     -- overrides `require("mason-null-ls").setup(...)`
-    opts = {
-      ensure_installed = { "prettier", "stylua" },
-    },
+    opts = function(_, opts)
+      -- add more things to the ensure_installed table protecting against community packs modifying it
+      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+        -- "prettier",
+        -- "stylua",
+      })
+    end,
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     -- overrides `require("mason-nvim-dap").setup(...)`
-    opts = {
-      ensure_installed = { "python" },
-    },
+    opts = function(_, opts)
+      -- add more things to the ensure_installed table protecting against community packs modifying it
+      opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+        -- "python",
+      })
+    end,
   },
 }

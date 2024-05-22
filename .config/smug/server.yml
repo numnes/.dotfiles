@@ -1,0 +1,22 @@
+session: srv-swarm
+
+windows:
+  - name: srv_manager
+    commands:
+      - sshpass -f ~/.ssh/swarm-pass ssh srv_manager
+
+  - name: srv_node_1
+    commands:
+      - sshpass -f ~/.ssh/swarm-pass ssh srv_node_1
+
+  - name: srv_node_2
+    commands:
+      - sshpass -f ~/.ssh/swarm-pass ssh srv_node_2
+
+  - name: srv_node_3
+    commands:
+      - sshpass -f ~/.ssh/swarm-pass ssh srv_node_3
+
+  - name: srv_node_4
+    commands:
+      - sshpass -f ~/.ssh/swarm-pass ssh srv_node_4
